@@ -207,7 +207,7 @@ class AnimeAv1 :
         "voe" to listOf("voe", "tubelessceliolymph", "simpulumlamerop", "urochsunloath", "nathanfromsubject", "yip.", "metagnathtuggers", "donaldlineelse"),
         "mp4upload" to listOf("mp4upload"),
         "pixeldrain" to listOf("pixeldrain"),
-        "player.zilla" to listOf("player.zilla"),
+        "player.zilla" to listOf("player.zilla", "hls"),
         "streamwish" to listOf("wishembed", "streamwish", "strwish", "wish", "Kswplayer", "Swhoi", "Multimovies", "Uqloads", "neko-stream", "swdyu", "iplayerhls", "streamgg"),
         "filelions" to listOf("filelions", "lion", "fviplions"),
         "doodstream" to listOf("doodstream", "dood.", "ds2play", "doods.", "ds2play", "ds2video", "dooood", "d000d", "d0000d"),
