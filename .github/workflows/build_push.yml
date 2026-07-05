@@ -47,6 +47,7 @@ jobs:
         run: |
           python ./.github/scripts/generate-build-matrices.py "4b825dc642cb6eb9a060e54bf8d69288fbee4904" Release
 
+
   build:
     name: Build extensions (${{ matrix.chunk.number }})
     needs: prepare
@@ -87,7 +88,7 @@ jobs:
           name: "individual-apks-${{ matrix.chunk.number }}"
           path: "**/*.apk"
           retention-days: 1
-
+          
   publish:
     name: Publish extension repo
     needs: [prepare, build]
@@ -123,10 +124,14 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          # Clona la rama 'repo' de tu propio fork
           git clone --branch repo https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git repo-folder || git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git repo-folder
           cd repo-folder
           git checkout -b repo || git checkout repo
-          cp -r ../main-code/repo/* . || cp -r ../main-code/output.json ./index.min.json
+          
+          # CORRECCIÓN AQUÍ: Copiar los archivos generados a la raíz del repositorio clonado
+          cp -r ../main-code/repo/* .
+          
           git add .
-          git commit -m "Update extensions JSON" || echo "No changes"
+          git commit -m "Update extensions JSON and APKs" || echo "No changes"
           git push origin repo
